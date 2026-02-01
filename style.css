@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MARVEL GRAPHIX — Design that speaks, Graphics that Marvel</title>
+  <meta name="description" content="Bold, creative, and clean graphics design studio. Design that speaks, Graphics that Marvel." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Vibrant gradient accents */
+      --grad-1: linear-gradient(135deg, #7C3AED 0%, #DB2777 50%, #F59E0B 100%);
+      --grad-2: linear-gradient(135deg, #22D3EE 0%, #6366F1 50%, #A855F7 100%);
+      --bg: #0b0c10;
+      --card: #0f1117;
+      --text: #e6e7eb;
+      --muted: #b4b7c2;
+      --white: #ffffff;
+      --border: #1c1f27;
+      --accent: #7C3AED;
+      --accent-2: #22D3EE;
+      --success: #10B981;
+      /* Spacing scale */
+      --space-1: 8px;
+      --space-2: 12px;
+      --space-3: 16px;
+      --space-4: 24px;
+      --space-5: 32px;
+      --space-6: 48px;
+      --radius-1: 12px;
+      --radius-2: 18px;
+      --radius-3: 28px;
+      --shadow-1: 0 10px 30px rgba(0,0,0,0.25);
+      --shadow-2: 0 20px 40px rgba(124,58,237,0.25);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(124,58,237,0.18), transparent 50%),
+                  radial-gradient(800px 800px at 90% 10%, rgba(34,211,238,0.12), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Global containers and utilities */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-4); }
+    .section { padding: calc(var(--space-6) + 12px) 0; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border-radius: 999px; background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border); color: var(--white); font-weight: 600; backdrop-filter: blur(6px);
+    }
+    .pill .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 4px rgba(124,58,237,0.2); }
+
+    /* Header / Nav */
+    header {
+      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
+      background: rgba(11,12,16,0.6); border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--space-3) 0;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--white);
+    }
+    .brand-mark {
+      width: 40px; height: 40px; border-radius: 12px;
+      background-image: var(--grad-2); box-shadow: var(--shadow-2);
+      display: grid; place-items: center;
+    }
+    .brand-mark svg { width: 24px; height: 24px; color: white; }
+    .brand-name { font-family: Montserrat, Inter, sans-serif; font-weight: 800; letter-spacing: 0.5px; }
+    nav ul {
+      list-style: none; display: flex; gap: 22px; margin: 0; padding: 0;
+    }
+    nav a {
+      color: var(--text); text-decoration: none; font-weight: 600; padding: 10px 12px; border-radius: 10px;
+      transition: all 240ms ease;
+    }
+    nav a:hover {
+      color: var(--white); background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-6); align-items: center;
+      padding: calc(var(--space-6) + 20px) 0 var(--space-6);
+    }
+    .hero h1 {
+      font-family: Montserrat, Inter, sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.1; margin: 0 0 var(--space-4);
+      letter-spacing: -0.5px;
+    }
+    .motto {
+      display: inline-block;
+      background: var(--grad-1); -webkit-background-clip: text; background-clip: text; color: transparent;
+      text-shadow: 0 0 20px rgba(219,39,119,0.25);
+    }
+    .hero p {
+      color: var(--muted); font-size: 1.05rem; max-width: 52ch; margin: 0 0 var(--space-5);
+    }
+    .cta {
+      display: inline-flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 14px;
+      background-image: var(--grad-2); color: white; font-weight: 700; text-decoration: none;
+      box-shadow: var(--shadow-2); transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 24px 50px rgba(99,102,241,0.35); }
+    .hero-visual {
+      position: relative; height: 480px; min-height: 380px;
+      border-radius: var(--radius-3); overflow: hidden;
+      background: radial-gradient(100% 100% at 10% 10%, rgba(34,211,238,0.18), transparent),
+                  radial-gradient(90% 70% at 90% 20%, rgba(124,58,237,0.18), transparent),
+                  #0d0f14;
+      border: 1px solid var(--border);
+    }
+
+    /* Mockup cards with hover parallax */
+    .mockup {
+      position: absolute; border-radius: 18px; overflow: hidden;
+      background: #11131a; border: 1px solid var(--border); box-shadow: var(--shadow-1);
+      transform: translateZ(0); transition: transform 260ms ease, box-shadow 260ms ease, filter 260ms ease;
+    }
+    .mockup:hover { transform: translateY(-6px) scale(1.02); filter: saturate(1.1); box-shadow: 0 30px 60px rgba(0,0,0,0.35); }
+
+    .mockup .bar { height: 42px; background: rgba(255,255,255,0.04); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; padding: 0 12px; }
+    .dot-red, .dot-yellow, .dot-green { width: 10px; height: 10px; border-radius: 999px; }
+    .dot-red { background: #ef4444; } .dot-yellow { background: #f59e0b; } .dot-green { background: #10b981; }
+    .mockup .content { padding: var(--space-4); }
+    .mockup h4 { margin: 0 0 8px; font-family: Montserrat; letter-spacing: 0.2px; }
+    .mockup p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+    /* About */
+    .about-card {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: var(--radius-3); padding: var(--space-6); display: grid; gap: var(--space-5);
+      grid-template-columns: 1fr 1fr;
+    }
+    .about-card h3 { font-family: Montserrat; margin-top: 0; }
+
+    /* Services */
+    .services {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-4);
+    }
+    .service {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-2);
+      padding: var(--space-4); transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+    }
+    .service:hover { transform: translateY(-4px); border-color: rgba(34,211,238,0.35); box-shadow: var(--shadow-1); }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 14px; background-image: var(--grad-2); display: grid; place-items: center; box-shadow: var(--shadow-2);
+      margin-bottom: var(--space-3);
+    }
+    .service-icon svg { width: 28px; height: 28px; color: white; }
+    .service h4 { margin: 0 0 8px; font-family: Montserrat; }
+    .service p { margin: 0; color: var(--muted); }
+
+    /* Portfolio */
+    .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4);
+    }
+    .tile {
+      position: relative; border-radius: var(--radius-2); overflow: hidden;
+      background: #121520; border: 1px solid var(--border);
+      aspect-ratio: 4 / 3; cursor: pointer; transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-1); }
+    .tile::after {
+      content: ""; position: absolute; inset: 0; background: radial-gradient(120% 100% at 0% 0%, rgba(124,58,237,0.18), transparent 50%);
+      pointer-events: none;
+    }
+    .tile .info {
+      position: absolute; inset: auto 0 0 0; padding: 16px; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+      transform: translateY(24px); opacity: 0; transition: all 220ms ease;
+    }
+    .tile:hover .info { transform: translateY(0); opacity: 1; }
+
+    /* Why choose us */
+    .why {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4);
+    }
+    .why .point {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: var(--radius-2);
+      padding: var(--space-4);
+    }
+    .why .badge { display: inline-block; padding: 8px 12px; border-radius: 12px; background: var(--grad-1); color: white; font-weight: 700; }
+
+    /* Testimonials */
+    .testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-2);
+      padding: var(--space-4); transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-1); }
+    .avatar {
+      width: 48px; height: 48px; border-radius: 999px; background-image: var(--grad-2); box-shadow: var(--shadow-2);
+    }
+    .reviewer { display: flex; align-items: center; gap: 12px; margin-bottom: var(--space-3); }
+    .stars { color: #F59E0B; }
+
+    /* Contact */
+    .contact {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-6);
+    }
+    form {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: var(--radius-3); padding: var(--space-5);
+    }
+    .field { margin-bottom: var(--space-4); }
+    label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--white); }
+    input, textarea {
+      width: 100%; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border);
+      background: #0f1117; color: var(--text); outline: none; transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+    input:focus, textarea:focus { border-color: rgba(124,58,237,0.45); box-shadow: 0 0 0 4px rgba(124,58,237,0.15); }
+    textarea { min-height: 140px; resize: vertical; }
+    .submit {
+      display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 14px;
+      background-image: var(--grad-1); color: white; font-weight: 700; border: none; cursor: pointer;
+      box-shadow: var(--shadow-2); transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+    .submit:hover { transform: translateY(-2px); box-shadow: 0 24px 50px rgba(219,39,119,0.35); }
+
+    .contact-info {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-3);
+      padding: var(--space-5);
+    }
+    .contact-info h4 { margin-top: 0; font-family: Montserrat; }
+    .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: var(--space-3); }
+    .contact-item .icon { width: 36px; height: 36px; border-radius: 10px; background-image: var(--grad-2); display: grid; place-items: center; color: white; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); margin-top: var(--space-6); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0; color: var(--muted); }
+    .credits { font-size: 0.95rem; }
+    .socials { display: flex; gap: 14px; }
+    .socials a { color: var(--text); text-decoration: none; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border); transition: all 160ms ease; }
+    .socials a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+      .about-card { grid-template-columns: 1fr; }
+      .services { grid-template-columns: repeat(2, 1fr); }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .why { grid-template-columns: repeat(2, 1fr); }
+      .testimonials { grid-template-columns: repeat(2, 1fr); }
+      .contact { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav ul { display: none; } /* Simplified mobile nav */
+      .services { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      .testimonials { grid-template-columns: 1fr; }
+      .why { grid-template-columns: 1fr; }
+      .hero-visual { height: 380px; }
+    }
+
+    /* Smooth section reveal */
+    .reveal { opacity: 0; transform: translateY(18px); }
+    .reveal.visible { opacity: 1; transform: translateY(0); transition: opacity 600ms ease, transform 600ms ease; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="MARVEL GRAPHIX home">
+        <span class="brand-mark">
+          <!-- Simple MG monogram -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 16V8l4 3 4-3v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 8h6l-2 4 2 4h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand-name">MARVEL GRAPHIX</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#why">Why us</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="section hero wrap" id="home">
+    <div>
+      <span class="pill"><span class="dot"></span> Creative studio</span>
+      <h1>
+        <span class="motto">Design that speaks, Graphics that Marvel.</span>
+      </h1>
+      <p>
+        Bold concepts, premium execution, and visuals that turn heads. MARVEL GRAPHIX crafts identity systems, web, and print designs with artful precision and modern flair.
+      </p>
+      <a class="cta" href="#contact" aria-label="Start your project">
+        Start your project
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+          <path d="M5 12h14M13 5l7 7-7 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <!-- Mockup panels -->
+      <div class="mockup" style="top: 24px; left: 24px; width: 58%; height: 56%;">
+        <div class="bar">
+          <span class="dot-red"></span><span class="dot-yellow"></span><span class="dot-green"></span>
+        </div>
+        <div class="content">
+          <h4>Responsive Web UI</h4>
+          <p>Clean grids, crisp type, and fluid gradients for immersive digital experiences.</p>
+        </div>
+      </div>
+      <div class="mockup" style="bottom: 24px; left: 40px; width: 42%; height: 40%;">
+        <div class="bar">
+          <span class="dot-red"></span><span class="dot-yellow"></span><span class="dot-green"></span>
+        </div>
+        <div class="content">
+          <h4>Poster Series</h4>
+          <p>High-impact layouts with dynamic color stories and confident typography.</p>
+        </div>
+      </div>
+      <div class="mockup" style="top: 60px; right: 24px; width: 44%; height: 60%;">
+        <div class="bar">
+          <span class="dot-red"></span><span class="dot-yellow"></span><span class="dot-green"></span>
+        </div>
+        <div class="content">
+          <h4>Logo Systems</h4>
+          <p>Distinct marks and scalable brand assets engineered to endure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section wrap reveal" id="about">
+    <div class="about-card">
+      <div>
+        <h3>About MARVEL GRAPHIX</h3>
+        <p>
+          MARVEL GRAPHIX is a bold, creative design studio dedicated to crafting visuals that resonate. We blend strategy with artistry to deliver modern, premium-quality design across digital and print.
+        </p>
+        <p>
+          Our motto anchors everything we do: <strong>Design that speaks, Graphics that Marvel.</strong> Expect clean aesthetics, vibrant accents, and pixel-perfect execution.
+        </p>
+      </div>
+      <div>
+        <h3>Mission and vision</h3>
+        <p>
+          Our mission is to elevate brands with expressive, functional design that drives connection and clarity. Our vision is a world where every brand identity feels unmistakably itself—modern, meaningful, and memorable.
+        </p>
+        <p>
+          We emphasize creativity, quality, and professionalism, delivering on-time with meticulous attention to detail and an unwavering respect for your brand.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section wrap reveal" id="services">
+    <h3 style="font-family: Montserrat; margin-top:0;">Services</h3>
+    <div class="services">
+      <div class="service">
+        <div class="service-icon">
+          <!-- Web Design icon -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="14" rx="3" stroke="white" stroke-width="2"/>
+            <path d="M3 9h18" stroke="white" stroke-width="2"/>
+          </svg>
+        </div>
+        <h4>Web Design</h4>
+        <p>Responsive sites with modern grids, animations, and seamless usability.</p>
+      </div>
+      <div class="service">
+        <div class="service-icon">
+          <!-- Logo Design icon -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="8" stroke="white" stroke-width="2"/>
+            <path d="M12 4v8l6 6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Logo Design</h4>
+        <p>Distinctive marks and scalable systems crafted for recognition.</p>
+      </div>
+      <div class="service">
+        <div class="service-icon">
+          <!-- Flyer & Poster icon -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="5" y="3" width="12" height="18" rx="2" stroke="white" stroke-width="2"/>
+            <path d="M7 7h8M7 11h8M7 15h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Flyer & Poster Design</h4>
+        <p>High-impact layouts with bold type and vibrant visual storytelling.</p>
+      </div>
+      <div class="service">
+        <div class="service-icon">
+          <!-- Banner Designs icon -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 5h16v10l-8-3-8 3V5z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h4>Banner Designs</h4>
+        <p>Attention-grabbing banners optimized for digital and outdoor display.</p>
+      </div>
+      <div class="service">
+        <div class="service-icon">
+          <!-- Letterhead icon -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="3" width="16" height="18" rx="2" stroke="white" stroke-width="2"/>
+            <path d="M7 8h10M7 12h10M7 16h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Letterhead Designs</h4>
+        <p>Elegant corporate stationery aligned to your brand system.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section class="section wrap reveal" id="portfolio">
+    <h3 style="font-family: Montserrat; margin-top:0;">Portfolio</h3>
+    <p class="muted" style="color: var(--muted); margin-bottom: var(--space-4);">Explore our work—hover to reveal details.</p>
+    <div class="grid">
+      <!-- Placeholder tiles; replace with real visuals -->
+      <div class="tile">
+        <div class="info"><strong>Brand Identity</strong><br/><span style="color:var(--muted);">Minimal logotype + palette system</span></div>
+      </div>
+      <div class="tile">
+        <div class="info"><strong>Poster Campaign</strong><br/><span style="color:var(--muted);">Vibrant gradient series</span></div>
+      </div>
+      <div class="tile">
+        <div class="info"><strong>Web Landing</strong><br/><span style="color:var(--muted);">Conversion-focused UI</span></div>
+      </div>
+      <div class="tile">
+        <div class="info"><strong>Event Banner</strong><br/><span style="color:var(--muted);">Outdoor-ready, bold contrast</span></div>
+      </div>
+      <div class="tile">
+        <div class="info"><strong>Corporate Letterhead</strong><br/><span style="color:var(--muted);">Clean grid, refined type</span></div>
+      </div>
+      <div class="tile">
+        <div class="info"><strong>Social Graphics</strong><br/><span style="color:var(--muted);">Motion-ready templates</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why choose us -->
+  <section class="section wrap reveal" id="why">
+    <h3 style="font-family: Montserrat; margin-top:0;">Why choose us</h3>
+    <div class="why">
+      <div class="point">
+        <span class="badge">Premium quality</span>
+        <p style="margin-top: 10px;">Modern, clean design with strong brand systems and meticulous craftsmanship.</p>
+      </div>
+      <div class="point">
+        <span class="badge">Fast & reliable</span>
+        <p style="margin-top: 10px;">Clear timelines, proactive communication, and dependable delivery.</p>
+      </div>
+      <div class="point">
+        <span class="badge">Affordable</span>
+        <p style="margin-top: 10px;">Flexible packages matched to outcomes—not just hours.</p>
+      </div>
+      <div class="point">
+        <span class="badge">Original creativity</span>
+        <p style="margin-top: 10px;">Distinct concepts tailored to your market and message.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section wrap reveal" id="testimonials">
+    <h3 style="font-family: Montserrat; margin-top:0;">Testimonials</h3>
+    <div class="testimonials">
+      <div class="card">
+        <div class="reviewer">
+          <div class="avatar"></div>
+          <div>
+            <strong>Chioma A.</strong><div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <p>They transformed our brand with a crisp identity and gorgeous marketing materials. Fast, friendly, and super professional.</p>
+      </div>
+      <div class="card">
+        <div class="reviewer">
+          <div class="avatar"></div>
+          <div>
+            <strong>David O.</strong><div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <p>Our website looks stunning and performs beautifully. The attention to detail is next level.</p>
+      </div>
+      <div class="card">
+        <div class="reviewer">
+          <div class="avatar"></div>
+          <div>
+            <strong>Amaka N.</strong><div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <p>Creative ideas, smooth process, and results that truly stand out. Highly recommend MARVEL GRAPHIX.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section wrap reveal" id="contact">
+    <h3 style="font-family: Montserrat; margin-top:0;">Contact</h3>
+    <div class="contact">
+      <form id="contactForm" aria-label="Contact form">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
+        </div>
+        <button class="submit" type="submit">
+          Send message
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+            <path d="M4 12l16-8-7 16-2-7-7-1z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <p id="formNote" style="color: var(--muted); margin-top: 10px;">We typically respond within 24–48 hours.</p>
+      </form>
+
+      <div class="contact-info">
+        <h4>Get in touch</h4>
+        <div class="contact-item">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+              <path d="M4 4h16v16H4z" stroke="white" stroke-width="2"/>
+              <path d="M4 7l8 6 8-6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Email</strong><br>
+            marvelgraphics15@gmail.com
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+              <path d="M8 8a4 4 0 118 0c0 4-4 7-4 7s-4-3-4-7z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="8" r="1.5" fill="white"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Twitter</strong><br>
+            @Marvel_graphix
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="credits">© <span id="year"></span> MARVEL GRAPHIX — Design that speaks, Graphics that Marvel.</div>
+      <div class="socials">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple client-side form handling (no backend)
+    const form = document.getElementById('contactForm');
+    const note = document.getElementById('formNote');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        message: form.message.value.trim()
+      };
+      if (!data.name || !data.email || !data.message) {
+        note.textContent = 'Please fill in all fields.';
+        note.style.color = '#ef4444';
+        return;
+      }
+      // Demo feedback; replace with backend integration
+      note.textContent = 'Thanks! Your message has been received.';
+      note.style.color = '#10B981';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
+:nth-of-type  ::-webkit-scrollbar-track-piece
